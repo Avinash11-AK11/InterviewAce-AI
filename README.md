@@ -10,14 +10,14 @@
   <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind-3.4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS"></a>
   <a href="https://firebase.google.com/"><img src="https://img.shields.io/badge/Firebase-9.0-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" alt="Firebase"></a>
   <a href="https://deepmind.google/technologies/gemini/"><img src="https://img.shields.io/badge/Gemini_1.5_Pro-Google-1A73E8?style=for-the-badge&logo=google&logoColor=white" alt="Gemini"></a>
-  <a href="https://vercel.com/"><img src="https://img.shields.io/badge/Deployed_to-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel"></a>
+  <a href="https://interview-ace-ai-jet.vercel.app"><img src="https://img.shields.io/badge/Deployed_to-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel"></a>
 </p>
 
 ---
 
 ## 📺 Video Demo & Live Link
 
-- 🚀 **Live Demo:** [Deploy Link (Vercel)](https://interview-ace-ai-jet.vercel.app/login)
+- 🚀 **Live Demo:** [Deploy Link (Vercel)](https://interview-ace-ai-jet.vercel.app)
 - 📹 **Walkthrough Video:** Click below to view the application features in action.
 
 <p align="center">
