@@ -10,13 +10,27 @@
   <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind-3.4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS"></a>
   <a href="https://firebase.google.com/"><img src="https://img.shields.io/badge/Firebase-9.0-FFCA28?style=for-the-badge&logo=firebase&logoColor=black" alt="Firebase"></a>
   <a href="https://deepmind.google/technologies/gemini/"><img src="https://img.shields.io/badge/Gemini_1.5_Pro-Google-1A73E8?style=for-the-badge&logo=google&logoColor=white" alt="Gemini"></a>
+  <a href="https://vercel.com/"><img src="https://img.shields.io/badge/Deployed_to-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Vercel"></a>
+</p>
+
+---
+
+## 📺 Video Demo & Live Link
+
+* 🚀 **Live Demo:** [Deploy Link (Vercel)](https://interviewace-ai.vercel.app) *(Update with your specific link)*
+* 📹 **Walkthrough Video:** Click below to view the application features in action.
+
+<p align="center">
+  <a href="YOUR_YOUTUBE_VIDEO_URL_HERE">
+    <img src="https://img.youtube.com/vi/YOUR_YOUTUBE_VIDEO_ID_HERE/0.jpg" alt="InterviewAce AI System Walkthrough" width="100%" style="border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.15);" />
+  </a>
 </p>
 
 ---
 
 ## 📖 Product Overview
 
-**InterviewAce AI** is a professional, product-driven candidate simulator that leverages generative AI to help developers land technical roles. The application is built using a **Layered Architecture (Clean Architecture)** design, decoupling the React Presentation UI from data storage and LLM services.
+**InterviewAce AI** is a professional, product-driven candidate simulator that leverages generative AI to help developers land technical roles. The application is built using a **Layered Architecture (Clean Architecture)** design, decoupling the React Presentation UI from data storage and LLM services. 
 
 Through **real-time subscription flows** and structured **Google Gemini 1.5 Pro integrations**, the system automates resume ATS analysis, mock interviews, DSA challenge compilations, and logical assessments.
 
@@ -24,7 +38,7 @@ Through **real-time subscription flows** and structured **Google Gemini 1.5 Pro 
 
 ## 🏛️ System & Software Architecture
 
-InterviewAce AI is built using a decoupled, layered software pattern to ensure high cohesion, low coupling, and scalable feature addition.
+InterviewAce AI is built using a decoupled, layered software pattern to ensure high cohesion, low coupling, and scalable feature addition. 
 
 ### Layered Architecture Diagram
 
@@ -54,7 +68,7 @@ graph TD
   classDef presentation fill:#F0B8C8,stroke:#d098a8,stroke-width:2px,color:#3a2f25;
   classDef service fill:#A8C5DA,stroke:#88a5ba,stroke-width:2px,color:#3a2f25;
   classDef data fill:#8FAF8F,stroke:#6f8f6f,stroke-width:2px,color:#ffffff;
-
+  
   class UI,Hooks,Theme presentation;
   class AuthService,GeminiService,DBOrchestrator service;
   class FirebaseAuth,GeminiAPI,Firestore,CloudStorage data;
@@ -65,7 +79,6 @@ graph TD
 ## 🔄 Core Product Workflows
 
 ### 1. AI Mock Interview Evaluation Pipeline
-
 The diagram below illustrates the lifecycle of a single mock interview session, from prompt compilation to real-time database persistence and state rendering.
 
 ```mermaid
@@ -90,7 +103,6 @@ sequenceDiagram
 ```
 
 ### 2. Resume ATS & Roadmap Compilation Lifecycle
-
 When a user uploads a resume, the system initiates a concurrent parsing and timeline-generation pipeline:
 
 1. **Extraction:** Resume contents are converted to structural text and sent to `analyzeResume(resumeText)`.
@@ -100,71 +112,86 @@ When a user uploads a resume, the system initiates a concurrent parsing and time
 
 ---
 
+## 📂 Directory & Module Layout
+```text
+src/
+├── components/
+│   ├── auth/          # PrivateRoute, AdminRoute Guards
+│   ├── layout/        # Sidebar, Navbar Layout wrappers
+│   ├── ui/            # Reusable Neomorphic UI Kit (Button, Card, Modal)
+│   └── gamification/  # XPBar, LevelBadge Progression indicators
+├── contexts/          # React Auth State Provider
+├── hooks/             # Custom useAuth Hook Exports
+├── pages/             # Pages by Domain (Aptitude, Mock-Interview, Profile, Settings)
+├── services/          # Gemini AI API Integration Layer
+├── store/             # Zustand Global State Management
+└── utils/             # Database Synchronization Engines, Helpers, Mocks
+```
+
+---
+
 ## 🎨 Applied Design Patterns
 
-- **Repository/Service Pattern:** All API calls and database actions are abstracted into standalone service modules (`geminiService.js`, `authService.js`), leaving React components UI-focused.
-- **Observer Pattern (Reactive UI):** Components subscribe to Firestore document streams via `onSnapshot` listeners. State changes propagate automatically across layout widgets.
-- **Command/Batch Pattern:** Rather than issuing individual network writes for bulk status updates (e.g. marking notifications read), changes are bundled into a `writeBatch` to limit API overhead.
+* **Repository/Service Pattern:** All API calls and database actions are abstracted into standalone service modules (`geminiService.js`, `authService.js`), leaving React components UI-focused.
+* **Observer Pattern (Reactive UI):** Components subscribe to Firestore document streams via `onSnapshot` listeners. State changes propagate automatically across layout widgets.
+* **Command/Batch Pattern:** Rather than issuing individual network writes for bulk status updates (e.g. marking notifications read), changes are bundled into a `writeBatch` to limit API overhead.
 
 ---
 
 ## 💾 Database Schema (Cloud Firestore)
 
-Below are the Document Schema definitions utilized in the Firestore NoSQL database:
+Below are the JavaScript object schemas representing document structures in our Firestore database collection:
 
-### `users` (User Account & Progression Data)
-
-```json
+### `users` Collection Document Structure
+```javascript
 {
-  "name": "Jane Doe",
-  "email": "jane.doe@example.com",
-  "college": "State University",
-  "xp": 1450,
-  "level": 5,
-  "badges": ["code_warrior", "quiz_master"],
-  "streak": 5,
-  "testsTaken": 8,
-  "problemsSolved": 12,
-  "interviewsDone": 3
+  name: "Jane Doe",
+  email: "jane.doe@example.com",
+  college: "Tech University",
+  xp: 1250,
+  level: 4,
+  badges: ["code_warrior", "quiz_master"], // Array of badge IDs
+  streak: 5,
+  testsTaken: 8,
+  problemsSolved: 12,
+  interviewsDone: 3
 }
 ```
 
-### `results` (Aptitude Test Records)
-
-```json
+### `results` Collection Document Structure
+```javascript
 {
-  "userId": "user_doc_id_123",
-  "topic": "Quantitative Reasoning",
-  "difficulty": "medium",
-  "score": 90,
-  "questions": [
+  userId: "user_document_id_xyz",
+  topic: "Quantitative Analysis",
+  difficulty: "medium",
+  score: 85, // Score percentage
+  questions: [
     {
-      "question": "If a tap can fill a tank in 4 hours...",
-      "selectedAnswer": "Option B",
-      "correctAnswer": "Option B",
-      "isCorrect": true
+      question: "Solve for x: 2x + 5 = 15",
+      selectedAnswer: "5",
+      correctAnswer: "5",
+      isCorrect: true
     }
   ],
-  "createdAt": "2026-06-29T12:00:00Z"
+  createdAt: "2026-06-29T12:00:00Z" // ISO string or Firestore Timestamp
 }
 ```
 
-### `interviewSessions` (AI Assessment Reports)
-
-```json
+### `interviewSessions` Collection Document Structure
+```javascript
 {
-  "userId": "user_doc_id_123",
-  "role": "Frontend Engineer",
-  "difficulty": "hard",
-  "overallScore": 82,
-  "completedAt": "2026-06-29T14:30:00Z",
-  "evaluations": [
+  userId: "user_document_id_xyz",
+  role: "Frontend Engineer",
+  difficulty: "hard",
+  overallScore: 78,
+  completedAt: "2026-06-29T14:30:00Z", // ISO string or Firestore Timestamp
+  evaluations: [
     {
-      "question": "What is the Virtual DOM in React?",
-      "answer": "It is a lightweight copy of the real DOM...",
-      "score": 88,
-      "feedback": "Strong explanation, could mention fiber reconciliation.",
-      "idealAnswer": "The Virtual DOM is a programming concept where a visual representation..."
+      question: "Explain closures in JavaScript.",
+      answer: "A closure is a function that remembers its outer variables...",
+      score: 85,
+      feedback: "Great explanation of lexical scoping.",
+      idealAnswer: "A closure is the combination of a function bundled together..."
     }
   ]
 }
@@ -174,38 +201,34 @@ Below are the Document Schema definitions utilized in the Firestore NoSQL databa
 
 ## ⚡ Technical Implementations & Optimizations
 
-- **Framer Motion Micro-Animations:** Dynamic state transitions use physical layouts (spring physics and exit animations) to optimize cognitive load.
-- **Responsive Layout Guard:** Layouts use double-tier drawer views, automatically collapsing sidebars on smaller displays to protect screen space.
-- **Structured Prompts:** Enforces JSON responses using system instructions to prevent LLM hallucination and ensure runtime parsing safety.
+* **Framer Motion Micro-Animations:** Dynamic state transitions use physical layouts (spring physics and exit animations) to optimize cognitive load.
+* **Responsive Layout Guard:** Layouts use double-tier drawer views, automatically collapsing sidebars on smaller displays to protect screen space.
+* **Structured Prompts:** Enforces JSON responses using system instructions to prevent LLM hallucination and ensure runtime parsing safety.
 
 ---
 
 ## 🚀 Getting Started
 
 ### 📋 Prerequisites
-
-- **Node.js:** v18.0.0+
-- **Firebase:** Account with Firestore and Auth enabled
-- **Google AI Studio:** Gemini API Key
+* **Node.js:** v18.0.0+
+* **Firebase:** Account with Firestore and Auth enabled
+* **Google AI Studio:** Gemini API Key
 
 ### 💻 Installation
 
 1. **Clone the repository:**
-
    ```bash
    git clone https://github.com/your-username/interviewace-ai.git
    cd interviewace-ai
    ```
 
 2. **Install dependencies:**
-
    ```bash
    npm install
    ```
 
 3. **Configure Environment Variables:**
    Create a `.env` file at the root:
-
    ```env
    VITE_FIREBASE_API_KEY=your_api_key
    VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
@@ -217,11 +240,9 @@ Below are the Document Schema definitions utilized in the Firestore NoSQL databa
    ```
 
 4. **Start local development server:**
-
    ```bash
    npm run dev
    ```
-
    Open `http://localhost:5173` in your browser.
 
 5. **Build project for deployment:**
@@ -232,9 +253,8 @@ Below are the Document Schema definitions utilized in the Firestore NoSQL databa
 ---
 
 ## 📜 License
-
 Distributed under the MIT License. See `LICENSE` for details.
 
 ---
 
-_Formulated by Avinash Chavda — Designed to empower candidates through structured AI-driven assessments._
+*Formulated by Avinash Chavda — Designed to empower candidates through structured AI-driven assessments.*
