@@ -1,7 +1,7 @@
 # <p align="center">🎯 InterviewAce AI</p>
 
 <p align="center">
-  <strong>The Ultimate AI-Powered Candidate Preparation Platform</strong>
+  <strong>Enterprise-Grade Candidate Preparation & AI-Driven Assessment Platform</strong>
 </p>
 
 <p align="center">
@@ -12,156 +12,171 @@
   <a href="https://deepmind.google/technologies/gemini/"><img src="https://img.shields.io/badge/Gemini_1.5_Pro-Google-1A73E8?style=for-the-badge&logo=google&logoColor=white" alt="Gemini"></a>
 </p>
 
-<p align="center">
-  InterviewAce AI is an advanced, production-ready candidate simulation platform that helps developers and engineers bridge skills gaps to land their target technical roles. Powered by <strong>Google Gemini 1.5 Pro AI</strong> and a real-time <strong>Firebase Serverless Architecture</strong>, it delivers high-fidelity mock interviews, deep resume ATS auditing, real-time code compiling, and logic aptitude tests inside a premium <strong>tactile neomorphic interface</strong>.
-</p>
+---
+
+## 📖 Product Overview
+
+**InterviewAce AI** is a professional, product-driven candidate simulator that leverages generative AI to help developers land technical roles. The application is built using a **Layered Architecture (Clean Architecture)** design, decoupling the React Presentation UI from data storage and LLM services.
+
+Through **real-time subscription flows** and structured **Google Gemini 1.5 Pro integrations**, the system automates resume ATS analysis, mock interviews, DSA challenge compilations, and logical assessments.
 
 ---
 
-## 🚀 Key Modules & Capabilities
+## 🏛️ System & Software Architecture
 
-### 📄 AI Resume Analyzer & ATS Optimizer
+InterviewAce AI is built using a decoupled, layered software pattern to ensure high cohesion, low coupling, and scalable feature addition.
 
-- **ATS Score Engine:** Compares resume textual content against target job roles to calculate matching percentages.
-- **Semantic Analysis:** Highlights keywords, technical stack elements, and soft skill matches.
-- **Actionable Issue Audits:** Identifies issues (formatting issues, poor action verbs, lack of metrics) with targeted correction guides.
-- **3-Month Growth Timeline:** Instantly compiles a week-by-week personalized learning roadmap to bridge gaps.
-
-### 🎙️ AI Mock Interview Simulator
-
-- **Interactive AI Coach:** Configures and conducts interviews utilizing text or voice.
-- **Contextual Questions:** Dynamically tailors behavioral and technical interview questions based on the candidate's target role.
-- **Scoring & Exemplary Model Answers:** Evaluates response technical depth, vocabulary, and communication, suggesting ideal model answers.
-
-### 💻 Coding DSA Workspace
-
-- **In-Browser IDE:** Code sandbox supporting code suggestions, custom test inputs, and syntax highlighting.
-- **Multi-Language Compiler Simulation:** Run, compile, and validate algorithms against test inputs in **JavaScript, Python, C++, and Java**.
-- **AI Solution Assistance:** Request context-aware hints, edge case analysis, and Big-O complexity reports.
-
-### 🧠 Logic Aptitude Testing Arena
-
-- **Neomorphic Configuration:** Configure test topics (Quantitative, Probability, Engineering Logic) and question volumes.
-- **Simulated Exams:** Real-time timer constraints, interactive score sheets, and correct-choice explanation sheets.
-
-### 📊 Gamified Developer Progress Board
-
-- **Tactile Stats Dashboard:** Visualizes overall metrics including Streak Days, Solved Challenges, Quizzes Taken, and Mock Interviews.
-- **Recharts Activity Graph:** Beautiful neomorphic `AreaChart` mapping daily study minutes over the last 7 days.
-- **Real-time Leaderboard:** Sorts users globally based on calculated XP.
-- **Public Sharing Links:** Generate public, read-only profile URLs to share progress with peers and recruiters.
-
-### 🔔 Real-Time Notification Stream
-
-- Instant popover and in-page notification updates powered by Firestore `onSnapshot` subscriptions.
-
----
-
-## 🏗️ Technical Highlights & Optimization
-
-### 🔗 Real-Time Backend Syncing
-
-- Uses **Firestore Snapshot Subscriptions** (`onSnapshot`) to implement reactive state syncing. When a user completes an activity, background statistics (`syncUserStats`) re-evaluate immediately to award XP and unlock badges, reflecting in real-time across the navbar, sidebar, and leaderboard.
-
-### ⚡ Batch Commit Optimization
-
-- Utilizes **Firestore Write Batches** (`writeBatch`) when marking multiple notifications as read. This merges multi-document mutations into a single network call to prevent layout thrashing.
-
-### 🧠 Gemini Prompt Engineering
-
-- Leverages advanced JSON Schema structured outputs from Gemini 1.5 Pro models. Prompts enforce strict type boundaries, ensuring consistent schema responses for ATS metrics and mock interview evaluations.
-
-### 🎨 Design Tokens & Theming (Neomorphism)
-
-- Designed using modern neomorphic CSS variables (`index.css`):
-  - **Shadow Outset:** `8px 8px 16px #D4CFC8, -8px -8px 16px #FFFFFF`
-  - **Shadow Inset:** `inset 4px 4px 8px #D4CFC8, inset -4px -4px 8px #FFFFFF`
-  - **Palette:** Sage Green (`#8FAF8F`), Sky Blue (`#A8C5DA`), Blush Pink (`#F0B8C8`), and warm cream backdrops (`#F5EFE6`).
-
----
-
-## 📂 Project Architecture
+### Layered Architecture Diagram
 
 ```mermaid
 graph TD
-  Candidate[Developer Candidate] -->|Browser UI| ReactApp[Vite & React Frontend]
-  ReactApp -->|onSnapshot| Firestore[(Firebase NoSQL DB)]
-  ReactApp -->|Secure Session| FirebaseAuth[Firebase Auth]
-  ReactApp -->|Multimodal Analysis| Gemini[Gemini 1.5 AI Engine]
-  ReactApp -->|Resume Uploads| FirebaseStorage[Cloud Storage]
-
-  subgraph Modules
-    ReactApp --> ProfilePortal[My Profile & Stats Tracker]
-    ReactApp --> AIResume[ATS Resume Analyzer]
-    ReactApp --> AIInterview[AI Vocal Mock Interview]
-    ReactApp --> CodingCompiler[DSA Code Compiler]
-    ReactApp --> AptitudeArena[Logic Quiz Engine]
+  %% Layer 1: Client/Presentation
+  subgraph Presentation Layer [1. Presentation Layer - Client UI]
+    UI[React Components] --> Hooks[Custom React Hooks & Contexts]
+    UI --> Theme[Neomorphic Design System]
   end
+
+  %% Layer 2: Service/Application Layer
+  subgraph Service Layer [2. Service Layer - App Orchestration]
+    Hooks --> AuthService[Auth Service]
+    Hooks --> GeminiService[Gemini AI Service]
+    Hooks --> DBOrchestrator[Database Sync Service]
+  end
+
+  %% Layer 3: Integration/Data Layer
+  subgraph Data Layer [3. Data & Infrastructure Layer]
+    AuthService --> FirebaseAuth[Firebase Auth SDK]
+    GeminiService --> GeminiAPI[Google Gemini 1.5 Client]
+    DBOrchestrator --> Firestore[Cloud Firestore SDK]
+    DBOrchestrator --> CloudStorage[Firebase Storage SDK]
+  end
+
+  classDef presentation fill:#F0B8C8,stroke:#d098a8,stroke-width:2px,color:#3a2f25;
+  classDef service fill:#A8C5DA,stroke:#88a5ba,stroke-width:2px,color:#3a2f25;
+  classDef data fill:#8FAF8F,stroke:#6f8f6f,stroke-width:2px,color:#ffffff;
+
+  class UI,Hooks,Theme presentation;
+  class AuthService,GeminiService,DBOrchestrator service;
+  class FirebaseAuth,GeminiAPI,Firestore,CloudStorage data;
 ```
+
+---
+
+## 🔄 Core Product Workflows
+
+### 1. AI Mock Interview Evaluation Pipeline
+
+The diagram below illustrates the lifecycle of a single mock interview session, from prompt compilation to real-time database persistence and state rendering.
+
+```mermaid
+sequenceDiagram
+  autonumber
+  actor Candidate as Candidate
+  participant UI as Interview UI (React)
+  participant GS as Gemini Service (LLM)
+  participant FS as Cloud Firestore (DB)
+  participant SE as Stats Engine (syncStats.js)
+
+  Candidate->>UI: Submit Audio/Text Answer
+  UI->>UI: Show Loading Skeleton
+  UI->>GS: request evaluation(question, answer, role)
+  GS->>GS: Enforce JSON Schema (correctness, feedback, idealAnswer)
+  GS-->>UI: Return Structured JSON Evaluation
+  UI->>FS: writeDoc(interviewSessions, evaluationPayload)
+  UI->>SE: trigger syncUserStats(userId)
+  SE->>FS: Increment user.interviewsDone & recalculate level/XP
+  FS-->>UI: Real-Time onSnapshot triggers state update
+  UI-->>Candidate: Render Neomorphic Score Ring & Feedback Cards
+```
+
+### 2. Resume ATS & Roadmap Compilation Lifecycle
+
+When a user uploads a resume, the system initiates a concurrent parsing and timeline-generation pipeline:
+
+1. **Extraction:** Resume contents are converted to structural text and sent to `analyzeResume(resumeText)`.
+2. **Analysis:** The LLM evaluates formatting anomalies, calculates matching percentages, and lists missing keywords.
+3. **Timeline Compilation:** Simultaneously, a second prompt compiles a week-by-week study timeline to close identified skills gaps.
+4. **Persistence:** The calculated roadmap, ATS score, and audit logs are written to Firestore as a single document under the `resumes` collection.
+
+---
+
+## 🎨 Applied Design Patterns
+
+- **Repository/Service Pattern:** All API calls and database actions are abstracted into standalone service modules (`geminiService.js`, `authService.js`), leaving React components UI-focused.
+- **Observer Pattern (Reactive UI):** Components subscribe to Firestore document streams via `onSnapshot` listeners. State changes propagate automatically across layout widgets.
+- **Command/Batch Pattern:** Rather than issuing individual network writes for bulk status updates (e.g. marking notifications read), changes are bundled into a `writeBatch` to limit API overhead.
 
 ---
 
 ## 💾 Database Schema (Cloud Firestore)
 
-Below are the JavaScript object schemas representing document structures in our Firestore database collection:
+Below are the Document Schema definitions utilized in the Firestore NoSQL database:
 
-### `users` Collection Document Structure
+### `users` (User Account & Progression Data)
 
-```javascript
+```json
 {
-  name: "Jane Doe",
-  email: "jane.doe@example.com",
-  college: "Tech University",
-  xp: 1250,
-  level: 4,
-  badges: ["code_warrior", "quiz_master"], // Array of badge IDs
-  streak: 5,
-  testsTaken: 8,
-  problemsSolved: 12,
-  interviewsDone: 3
+  "name": "Jane Doe",
+  "email": "jane.doe@example.com",
+  "college": "State University",
+  "xp": 1450,
+  "level": 5,
+  "badges": ["code_warrior", "quiz_master"],
+  "streak": 5,
+  "testsTaken": 8,
+  "problemsSolved": 12,
+  "interviewsDone": 3
 }
 ```
 
-### `results` Collection Document Structure
+### `results` (Aptitude Test Records)
 
-```javascript
+```json
 {
-  userId: "user_document_id_xyz",
-  topic: "Quantitative Analysis",
-  difficulty: "medium",
-  score: 85, // Score percentage
-  questions: [
+  "userId": "user_doc_id_123",
+  "topic": "Quantitative Reasoning",
+  "difficulty": "medium",
+  "score": 90,
+  "questions": [
     {
-      question: "Solve for x: 2x + 5 = 15",
-      selectedAnswer: "5",
-      correctAnswer: "5",
-      isCorrect: true
+      "question": "If a tap can fill a tank in 4 hours...",
+      "selectedAnswer": "Option B",
+      "correctAnswer": "Option B",
+      "isCorrect": true
     }
   ],
-  createdAt: "2026-06-29T12:00:00Z" // ISO string or Firestore Timestamp
+  "createdAt": "2026-06-29T12:00:00Z"
 }
 ```
 
-### `interviewSessions` Collection Document Structure
+### `interviewSessions` (AI Assessment Reports)
 
-```javascript
+```json
 {
-  userId: "user_document_id_xyz",
-  role: "Frontend Engineer",
-  difficulty: "hard",
-  overallScore: 78,
-  completedAt: "2026-06-29T14:30:00Z", // ISO string or Firestore Timestamp
-  evaluations: [
+  "userId": "user_doc_id_123",
+  "role": "Frontend Engineer",
+  "difficulty": "hard",
+  "overallScore": 82,
+  "completedAt": "2026-06-29T14:30:00Z",
+  "evaluations": [
     {
-      question: "Explain closures in JavaScript.",
-      answer: "A closure is a function that remembers its outer variables...",
-      score: 85,
-      feedback: "Great explanation of lexical scoping.",
-      idealAnswer: "A closure is the combination of a function bundled together..."
+      "question": "What is the Virtual DOM in React?",
+      "answer": "It is a lightweight copy of the real DOM...",
+      "score": 88,
+      "feedback": "Strong explanation, could mention fiber reconciliation.",
+      "idealAnswer": "The Virtual DOM is a programming concept where a visual representation..."
     }
   ]
 }
 ```
+
+---
+
+## ⚡ Technical Implementations & Optimizations
+
+- **Framer Motion Micro-Animations:** Dynamic state transitions use physical layouts (spring physics and exit animations) to optimize cognitive load.
+- **Responsive Layout Guard:** Layouts use double-tier drawer views, automatically collapsing sidebars on smaller displays to protect screen space.
+- **Structured Prompts:** Enforces JSON responses using system instructions to prevent LLM hallucination and ensure runtime parsing safety.
 
 ---
 
@@ -222,4 +237,4 @@ Distributed under the MIT License. See `LICENSE` for details.
 
 ---
 
-_Formulated by Avinash Chavda — Created to optimize interview preparation and profile analytics._
+_Formulated by Avinash Chavda — Designed to empower candidates through structured AI-driven assessments._
