@@ -17,8 +17,8 @@
 
 ## 📺 Video Demo & Live Link
 
-* 🚀 **Live Demo:** [Deploy Link (Vercel)](https://interviewace-ai.vercel.app) *(Update with your specific link)*
-* 📹 **Walkthrough Video:** Click below to view the application features in action.
+- 🚀 **Live Demo:** [Deploy Link (Vercel)](https://interview-ace-ai-jet.vercel.app/login)
+- 📹 **Walkthrough Video:** Click below to view the application features in action.
 
 <p align="center">
   <a href="YOUR_YOUTUBE_VIDEO_URL_HERE">
@@ -30,7 +30,7 @@
 
 ## 📖 Product Overview
 
-**InterviewAce AI** is a professional, product-driven candidate simulator that leverages generative AI to help developers land technical roles. The application is built using a **Layered Architecture (Clean Architecture)** design, decoupling the React Presentation UI from data storage and LLM services. 
+**InterviewAce AI** is a professional, product-driven candidate simulator that leverages generative AI to help developers land technical roles. The application is built using a **Layered Architecture (Clean Architecture)** design, decoupling the React Presentation UI from data storage and LLM services.
 
 Through **real-time subscription flows** and structured **Google Gemini 1.5 Pro integrations**, the system automates resume ATS analysis, mock interviews, DSA challenge compilations, and logical assessments.
 
@@ -38,7 +38,7 @@ Through **real-time subscription flows** and structured **Google Gemini 1.5 Pro 
 
 ## 🏛️ System & Software Architecture
 
-InterviewAce AI is built using a decoupled, layered software pattern to ensure high cohesion, low coupling, and scalable feature addition. 
+InterviewAce AI is built using a decoupled, layered software pattern to ensure high cohesion, low coupling, and scalable feature addition.
 
 ### Layered Architecture Diagram
 
@@ -68,7 +68,7 @@ graph TD
   classDef presentation fill:#F0B8C8,stroke:#d098a8,stroke-width:2px,color:#3a2f25;
   classDef service fill:#A8C5DA,stroke:#88a5ba,stroke-width:2px,color:#3a2f25;
   classDef data fill:#8FAF8F,stroke:#6f8f6f,stroke-width:2px,color:#ffffff;
-  
+
   class UI,Hooks,Theme presentation;
   class AuthService,GeminiService,DBOrchestrator service;
   class FirebaseAuth,GeminiAPI,Firestore,CloudStorage data;
@@ -79,6 +79,7 @@ graph TD
 ## 🔄 Core Product Workflows
 
 ### 1. AI Mock Interview Evaluation Pipeline
+
 The diagram below illustrates the lifecycle of a single mock interview session, from prompt compilation to real-time database persistence and state rendering.
 
 ```mermaid
@@ -103,6 +104,7 @@ sequenceDiagram
 ```
 
 ### 2. Resume ATS & Roadmap Compilation Lifecycle
+
 When a user uploads a resume, the system initiates a concurrent parsing and timeline-generation pipeline:
 
 1. **Extraction:** Resume contents are converted to structural text and sent to `analyzeResume(resumeText)`.
@@ -113,6 +115,7 @@ When a user uploads a resume, the system initiates a concurrent parsing and time
 ---
 
 ## 📂 Directory & Module Layout
+
 ```text
 src/
 ├── components/
@@ -132,9 +135,9 @@ src/
 
 ## 🎨 Applied Design Patterns
 
-* **Repository/Service Pattern:** All API calls and database actions are abstracted into standalone service modules (`geminiService.js`, `authService.js`), leaving React components UI-focused.
-* **Observer Pattern (Reactive UI):** Components subscribe to Firestore document streams via `onSnapshot` listeners. State changes propagate automatically across layout widgets.
-* **Command/Batch Pattern:** Rather than issuing individual network writes for bulk status updates (e.g. marking notifications read), changes are bundled into a `writeBatch` to limit API overhead.
+- **Repository/Service Pattern:** All API calls and database actions are abstracted into standalone service modules (`geminiService.js`, `authService.js`), leaving React components UI-focused.
+- **Observer Pattern (Reactive UI):** Components subscribe to Firestore document streams via `onSnapshot` listeners. State changes propagate automatically across layout widgets.
+- **Command/Batch Pattern:** Rather than issuing individual network writes for bulk status updates (e.g. marking notifications read), changes are bundled into a `writeBatch` to limit API overhead.
 
 ---
 
@@ -143,6 +146,7 @@ src/
 Below are the JavaScript object schemas representing document structures in our Firestore database collection:
 
 ### `users` Collection Document Structure
+
 ```javascript
 {
   name: "Jane Doe",
@@ -159,6 +163,7 @@ Below are the JavaScript object schemas representing document structures in our 
 ```
 
 ### `results` Collection Document Structure
+
 ```javascript
 {
   userId: "user_document_id_xyz",
@@ -178,6 +183,7 @@ Below are the JavaScript object schemas representing document structures in our 
 ```
 
 ### `interviewSessions` Collection Document Structure
+
 ```javascript
 {
   userId: "user_document_id_xyz",
@@ -201,34 +207,38 @@ Below are the JavaScript object schemas representing document structures in our 
 
 ## ⚡ Technical Implementations & Optimizations
 
-* **Framer Motion Micro-Animations:** Dynamic state transitions use physical layouts (spring physics and exit animations) to optimize cognitive load.
-* **Responsive Layout Guard:** Layouts use double-tier drawer views, automatically collapsing sidebars on smaller displays to protect screen space.
-* **Structured Prompts:** Enforces JSON responses using system instructions to prevent LLM hallucination and ensure runtime parsing safety.
+- **Framer Motion Micro-Animations:** Dynamic state transitions use physical layouts (spring physics and exit animations) to optimize cognitive load.
+- **Responsive Layout Guard:** Layouts use double-tier drawer views, automatically collapsing sidebars on smaller displays to protect screen space.
+- **Structured Prompts:** Enforces JSON responses using system instructions to prevent LLM hallucination and ensure runtime parsing safety.
 
 ---
 
 ## 🚀 Getting Started
 
 ### 📋 Prerequisites
-* **Node.js:** v18.0.0+
-* **Firebase:** Account with Firestore and Auth enabled
-* **Google AI Studio:** Gemini API Key
+
+- **Node.js:** v18.0.0+
+- **Firebase:** Account with Firestore and Auth enabled
+- **Google AI Studio:** Gemini API Key
 
 ### 💻 Installation
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/your-username/interviewace-ai.git
    cd interviewace-ai
    ```
 
 2. **Install dependencies:**
+
    ```bash
    npm install
    ```
 
 3. **Configure Environment Variables:**
    Create a `.env` file at the root:
+
    ```env
    VITE_FIREBASE_API_KEY=your_api_key
    VITE_FIREBASE_AUTH_DOMAIN=your_auth_domain
@@ -240,9 +250,11 @@ Below are the JavaScript object schemas representing document structures in our 
    ```
 
 4. **Start local development server:**
+
    ```bash
    npm run dev
    ```
+
    Open `http://localhost:5173` in your browser.
 
 5. **Build project for deployment:**
@@ -253,8 +265,9 @@ Below are the JavaScript object schemas representing document structures in our 
 ---
 
 ## 📜 License
+
 Distributed under the MIT License. See `LICENSE` for details.
 
 ---
 
-*Formulated by Avinash Chavda — Designed to empower candidates through structured AI-driven assessments.*
+_Formulated by Avinash Chavda — Designed to empower candidates through structured AI-driven assessments._
