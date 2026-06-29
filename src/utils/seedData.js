@@ -1,0 +1,235 @@
+// ─── Badges Data ─────────────────────────────────────────────────────────────
+
+export const BADGES_DATA = [
+  // ── Tests ──────────────────────────────────────────────────────────────────
+  {
+    id: 'first_test',
+    name: 'First Step',
+    description: 'Complete your first aptitude test',
+    emoji: '🎯',
+    category: 'Tests',
+    xpReward: 50,
+    requirement: { type: 'tests_taken', count: 1 },
+  },
+  {
+    id: 'test_5',
+    name: 'Quiz Enthusiast',
+    description: 'Complete 5 aptitude tests',
+    emoji: '📝',
+    category: 'Tests',
+    xpReward: 100,
+    requirement: { type: 'tests_taken', count: 5 },
+  },
+  {
+    id: 'test_25',
+    name: 'Test Veteran',
+    description: 'Complete 25 aptitude tests',
+    emoji: '🏅',
+    category: 'Tests',
+    xpReward: 300,
+    requirement: { type: 'tests_taken', count: 25 },
+  },
+  {
+    id: 'perfect_score',
+    name: 'Perfectionist',
+    description: 'Score 100% on any test',
+    emoji: '💯',
+    category: 'Tests',
+    xpReward: 200,
+    requirement: { type: 'perfect_score', count: 1 },
+  },
+  {
+    id: 'high_scorer',
+    name: 'High Achiever',
+    description: 'Score above 90% on 5 tests',
+    emoji: '⭐',
+    category: 'Tests',
+    xpReward: 250,
+    requirement: { type: 'high_score_count', count: 5 },
+  },
+
+  // ── Coding ────────────────────────────────────────────────────────────────
+  {
+    id: 'first_code',
+    name: 'Hello, World!',
+    description: 'Submit your first coding solution',
+    emoji: '💻',
+    category: 'Coding',
+    xpReward: 50,
+    requirement: { type: 'problems_solved', count: 1 },
+  },
+  {
+    id: 'code_10',
+    name: 'Code Ninja',
+    description: 'Solve 10 coding problems',
+    emoji: '🥷',
+    category: 'Coding',
+    xpReward: 200,
+    requirement: { type: 'problems_solved', count: 10 },
+  },
+  {
+    id: 'code_50',
+    name: 'Algorithm Wizard',
+    description: 'Solve 50 coding problems',
+    emoji: '🧙',
+    category: 'Coding',
+    xpReward: 500,
+    requirement: { type: 'problems_solved', count: 50 },
+  },
+  {
+    id: 'hard_problem',
+    name: 'Challenge Accepted',
+    description: 'Solve a Hard difficulty problem',
+    emoji: '🔥',
+    category: 'Coding',
+    xpReward: 300,
+    requirement: { type: 'hard_problems', count: 1 },
+  },
+
+  // ── Interviews ────────────────────────────────────────────────────────────
+  {
+    id: 'first_interview',
+    name: 'First Interview',
+    description: 'Complete your first AI mock interview',
+    emoji: '🎤',
+    category: 'Interviews',
+    xpReward: 100,
+    requirement: { type: 'interviews_done', count: 1 },
+  },
+  {
+    id: 'interview_5',
+    name: 'Interview Pro',
+    description: 'Complete 5 mock interviews',
+    emoji: '🎙️',
+    category: 'Interviews',
+    xpReward: 300,
+    requirement: { type: 'interviews_done', count: 5 },
+  },
+  {
+    id: 'interview_20',
+    name: 'Interview Master',
+    description: 'Complete 20 mock interviews',
+    emoji: '🏆',
+    category: 'Interviews',
+    xpReward: 700,
+    requirement: { type: 'interviews_done', count: 20 },
+  },
+
+  // ── Streaks ───────────────────────────────────────────────────────────────
+  {
+    id: 'streak_3',
+    name: 'On a Roll',
+    description: 'Maintain a 3-day login streak',
+    emoji: '🔥',
+    category: 'Streaks',
+    xpReward: 75,
+    requirement: { type: 'streak_days', count: 3 },
+  },
+  {
+    id: 'streak_7',
+    name: 'Week Warrior',
+    description: 'Maintain a 7-day login streak',
+    emoji: '⚡',
+    category: 'Streaks',
+    xpReward: 150,
+    requirement: { type: 'streak_days', count: 7 },
+  },
+  {
+    id: 'streak_30',
+    name: 'Monthly Legend',
+    description: 'Maintain a 30-day login streak',
+    emoji: '🌟',
+    category: 'Streaks',
+    xpReward: 500,
+    requirement: { type: 'streak_days', count: 30 },
+  },
+
+  // ── Special ───────────────────────────────────────────────────────────────
+  {
+    id: 'resume_upload',
+    name: 'Resume Ready',
+    description: 'Upload your first resume for analysis',
+    emoji: '📄',
+    category: 'Special',
+    xpReward: 100,
+    requirement: { type: 'resumes_uploaded', count: 1 },
+  },
+  {
+    id: 'profile_complete',
+    name: 'Complete Profile',
+    description: 'Fill in all profile fields',
+    emoji: '✅',
+    category: 'Special',
+    xpReward: 50,
+    requirement: { type: 'profile_complete', count: 1 },
+  },
+  {
+    id: 'early_adopter',
+    name: 'Early Adopter',
+    description: 'One of the first 100 users of InterviewAce AI',
+    emoji: '🚀',
+    category: 'Special',
+    xpReward: 500,
+    requirement: { type: 'special', count: 1 },
+  },
+];
+
+// ─── Mock Leaderboard Data ───────────────────────────────────────────────────
+
+export const MOCK_LEADERBOARD = [
+  { id: '1', name: 'Arjun Sharma',    college: 'IIT Bombay',   xp: 12400, level: 12, badgesCount: 14, avatarUrl: null },
+  { id: '2', name: 'Priya Patel',     college: 'NIT Trichy',   xp: 11800, level: 11, badgesCount: 12, avatarUrl: null },
+  { id: '3', name: 'Rahul Gupta',     college: 'BITS Pilani',  xp: 10500, level: 10, badgesCount: 11, avatarUrl: null },
+  { id: '4', name: 'Ananya Singh',    college: 'IIT Delhi',    xp:  9800, level: 10, badgesCount: 10, avatarUrl: null },
+  { id: '5', name: 'Karthik Nair',    college: 'VIT Vellore',  xp:  9200, level:  9, badgesCount:  9, avatarUrl: null },
+  { id: '6', name: 'Divya Reddy',     college: 'IIIT Hyderabad',xp: 8700, level:  9, badgesCount:  8, avatarUrl: null },
+  { id: '7', name: 'Siddharth Kumar', college: 'IIT Madras',   xp:  8100, level:  9, badgesCount:  8, avatarUrl: null },
+  { id: '8', name: 'Sneha Iyer',      college: 'NIT Warangal', xp:  7600, level:  8, badgesCount:  7, avatarUrl: null },
+  { id: '9', name: 'Aditya Verma',    college: 'DTU Delhi',    xp:  7200, level:  8, badgesCount:  7, avatarUrl: null },
+  { id: '10',name: 'Meera Krishnan',  college: 'Anna University',xp:6800, level:  8, badgesCount:  6, avatarUrl: null },
+];
+
+// ─── Mock Notifications ───────────────────────────────────────────────────────
+
+export const MOCK_NOTIFICATIONS = [
+  {
+    id: 'n1',
+    type: 'badge',
+    title: 'Badge Earned!',
+    message: "You've earned the 'First Step' badge. Keep going!",
+    timestamp: new Date(Date.now() - 1000 * 60 * 30),
+    read: false,
+  },
+  {
+    id: 'n2',
+    type: 'test',
+    title: 'Test Completed',
+    message: 'Your Quantitative Aptitude test score: 87%. Great job!',
+    timestamp: new Date(Date.now() - 1000 * 60 * 60 * 2),
+    read: false,
+  },
+  {
+    id: 'n3',
+    type: 'interview',
+    title: 'Interview Feedback Ready',
+    message: 'Your AI mock interview feedback is now available. Check your performance analysis.',
+    timestamp: new Date(Date.now() - 1000 * 60 * 60 * 5),
+    read: true,
+  },
+  {
+    id: 'n4',
+    type: 'xp',
+    title: 'XP Milestone',
+    message: 'Congratulations! You reached Level 5 and unlocked the Junior Dev rank!',
+    timestamp: new Date(Date.now() - 1000 * 60 * 60 * 24),
+    read: true,
+  },
+  {
+    id: 'n5',
+    type: 'system',
+    title: 'Welcome to InterviewAce AI',
+    message: 'Your account is all set up. Start your interview preparation journey today!',
+    timestamp: new Date(Date.now() - 1000 * 60 * 60 * 24 * 3),
+    read: true,
+  },
+];
