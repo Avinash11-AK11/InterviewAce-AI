@@ -93,8 +93,10 @@ const mapFirebaseError = (code) => {
     'auth/network-request-failed': 'Network error. Check your connection.',
     'auth/popup-closed-by-user': 'Google sign-in was cancelled.',
     'auth/popup-blocked': 'Popup was blocked. Please allow popups for this site.',
+    'auth/invalid-api-key': 'Invalid Firebase API Key. Please verify your Vercel Environment Variables.',
+    'auth/configuration-not-found': 'Firebase project configuration is invalid or missing.',
   };
-  return map[code] || 'An unexpected error occurred. Please try again.';
+  return map[code] || `An unexpected error occurred (${code || 'unknown'}). Please check browser console or Vercel logs.`;
 };
 
 /* ─── Login Component ─────────────────────────────────────────────────────── */
@@ -128,6 +130,7 @@ export default function Login() {
         navigate('/dashboard');
       }
     } catch (err) {
+      console.error('Login error:', err);
       setError(mapFirebaseError(err.code));
     } finally {
       setIsLoading(false);
@@ -147,6 +150,7 @@ export default function Login() {
         navigate('/dashboard');
       }
     } catch (err) {
+      console.error('Google login error:', err);
       if (err.code !== 'auth/popup-closed-by-user') {
         setError(mapFirebaseError(err.code));
       }

@@ -87,8 +87,10 @@ const mapFirebaseError = (code) => {
     'auth/network-request-failed': 'Network error. Check your connection.',
     'auth/popup-closed-by-user': 'Google sign-in was cancelled.',
     'auth/too-many-requests': 'Too many attempts. Please wait and try again.',
+    'auth/invalid-api-key': 'Invalid Firebase API Key. Please verify your Vercel Environment Variables.',
+    'auth/configuration-not-found': 'Firebase project configuration is invalid or missing.',
   };
-  return map[code] || `Error: ${code} - Please check console for details.`;
+  return map[code] || `Error (${code || 'unknown'}): Please check browser console or Vercel logs.`;
 };
 
 /* ─── Animation variants ──────────────────────────────────────────────────── */
@@ -232,6 +234,7 @@ export default function Register() {
       setSuccess(true);
       setTimeout(() => navigate('/dashboard'), 1500);
     } catch (err) {
+      console.error('Registration error:', err);
       setError(mapFirebaseError(err.code));
     } finally {
       setIsLoading(false);
@@ -245,6 +248,7 @@ export default function Register() {
       await signInGoogle();
       navigate('/dashboard');
     } catch (err) {
+      console.error('Google registration error:', err);
       if (err.code !== 'auth/popup-closed-by-user') {
         setError(mapFirebaseError(err.code));
       }
