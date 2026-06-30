@@ -95,6 +95,7 @@ const mapFirebaseError = (code) => {
     'auth/popup-blocked': 'Popup was blocked. Please allow popups for this site.',
     'auth/invalid-api-key': 'Invalid Firebase API Key. Please verify your Vercel Environment Variables.',
     'auth/configuration-not-found': 'Firebase project configuration is invalid or missing.',
+    'auth/unauthorized-domain': 'This Vercel domain is not authorized in your Firebase console. Please add it to your Authorized Domains in the Firebase Auth settings.',
   };
   return map[code] || `An unexpected error occurred (${code || 'unknown'}). Please check browser console or Vercel logs.`;
 };
